@@ -1,19 +1,23 @@
 <?php
 
-use App\Enums\Roles;
-use App\Http\Controllers\BookingController;
-use App\Http\Controllers\EventController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\ServiceController;
-use App\Http\Controllers\WelcomeController;
-use App\Http\Controllers\MessageController;
-use App\Http\Controllers\PromotionController;
-use App\Models\Role;
-use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\EventController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\MessageController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\WelcomeController;
+use App\Http\Controllers\PromotionController;
 
+Route::domain('admin.localhost')->group(function () {
+    require __DIR__ . "/admin.php";
+
+    Route::get('{catchall}', function () {
+        abort(404);
+    })->where('catchall', '(.*)');
+});
 
 Route::name('client.')->group(function () {
     Route::get('/lang', function (Request $request) {
