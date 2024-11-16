@@ -1,6 +1,5 @@
 <?php
 
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Request;
 
 if (!function_exists('numberToWords')) {
@@ -34,4 +33,12 @@ function getModelPermission(Request $request, $model)
     'update' => $request->user()?->can('update', $model),
     'delete' => $request->user()?->can('delete', $model),
   ];
+}
+
+
+if (!function_exists('getDomainName')) {
+  function getDomainName(): string
+  {
+    return str_replace(['http://', 'https://'], '', config('app.url'));
+  }
 }
