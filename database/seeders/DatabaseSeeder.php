@@ -32,10 +32,10 @@ class DatabaseSeeder extends Seeder
         }
 
         User::create([
-            'first_name' => 'admin',
-            'last_name' => 'admin',
-            'email' => 'admin@gmail.com',
-            'phone' => '0550403020',
+            'first_name' => 'Abdennour',
+            'last_name' => 'Tadjer',
+            'email' => 'abdennour.tadjer@gmail.com',
+            'phone' => '0780115527',
             'access' => true,
             'password' => bcrypt('password'),
             'role_id' => 1,

@@ -11,11 +11,11 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PromotionController;
 
-Route::domain('admin.localhost')->group(function () {
+Route::domain('admin.' . getDomainName())->group(function () {
     require __DIR__ . "/admin.php";
 
     Route::get('{catchall}', function () {
-        abort(404);
+        return '<p>subdomain route not found <a href="/">dashboard</a></p>';
     })->where('catchall', '(.*)');
 });
 
@@ -46,3 +46,17 @@ Route::name('client.')->group(function () {
 });
 
 require __DIR__ . '/auth.php';
+
+// Route::domain('admin.' . getDomainName())->group(function () {
+//     Route::get('/', function () {
+//         return "subdomain admin";
+//     });
+
+//     Route::get('{catchall}', function () {
+//         return '<p>subdomain route not found <a href="/">dashboard</a></p>';
+//     })->where('catchall', '(.*)');
+// });
+
+// Route::get('/', function () {
+//     return 'main domain';
+// });
