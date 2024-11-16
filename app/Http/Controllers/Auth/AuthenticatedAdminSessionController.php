@@ -27,7 +27,7 @@ class AuthenticatedAdminSessionController extends Controller
     /**
      * Handle an incoming authentication request.
      */
-    public function adminstore(AdminLoginRequest $request): RedirectResponse
+    public function store(AdminLoginRequest $request): RedirectResponse
     {
         $request->authenticate();
 
